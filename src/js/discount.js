@@ -3,9 +3,8 @@ import localStorageApi from "./localStorageApi.js";
 import refsAPI from "./refs.js";
 // icons
 import discountIcon from "../img/icons.svg#discount-icon";
-console.log("icon: ", discountIcon);
-const DISCOUNTCART = "./img/icons.svg#discount-cart";
-const DISCOUNTCECKED = "./img/icons.svg#discount-checked";
+import cartIcon from "../img/icons.svg#discount-cart";
+import checkedIcon from "../img/icons.svg#discount-checked";
 
 // function to draw discount products section
 async function drawDiscount() {
@@ -46,9 +45,9 @@ async function drawDiscount() {
   const productsList = [];
   productsToDraw.forEach((product) => {
     //chose icon
-    let icon = DISCOUNTCART;
+    let icon = cartIcon;
     if (productsInCart.includes(product._id)) {
-      icon = DISCOUNTCECKED;
+      icon = checkedIcon;
     }
     productsList.push(`
         <li class="discount-list-item discount-show" data-productId="${product._id}">
@@ -115,8 +114,8 @@ function buyProduct(id) {
 
 function changeCartIcon(id, prefix) {
   const frontEnd = new refsAPI();
-  if (frontEnd[`${prefix}${id}`].href.baseVal === DISCOUNTCART) {
-    frontEnd[`${prefix}${id}`].href.baseVal = DISCOUNTCECKED;
+  if (frontEnd[`${prefix}${id}`].href.baseVal === `${cartIcon}`) {
+    frontEnd[`${prefix}${id}`].href.baseVal = `${checkedIcon}`;
   }
 }
 
