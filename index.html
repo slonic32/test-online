@@ -4,23 +4,218 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>FoodBoutique 🥦🍓</title>
     
     <script type="module" crossorigin src="/test-online/assets/vendor-a61d8330.js"></script>
-    <script type="module" crossorigin src="/test-online/assets/main-92d8f23e.js"></script>
-    <link rel="stylesheet" href="/test-online/assets/styles-9acfc9c3.css">
+    <script type="module" crossorigin src="/test-online/assets/main-b4a0cf36.js"></script>
+    <link rel="stylesheet" href="/test-online/assets/main-407dbef8.css">
   </head>
   <body>
-    
-    
+    <header class="page-header-container container">
+  <nav class="main-nav">
+    <div class="logo-wrapper">
+      <a class="logo-link" href="./index.html">
+        <span class="header-logo-icon-wrap">
+          <svg class="header-logo-icon">
+            <use href="/test-online/assets/icons-5dbc4c13.svg#logo-icon"></use>
+          </svg>
+        </span>
+        Food Boutique
+      </a>
+    </div>
 
-    
+    <ul class="navig-wrapper list">
+      <li>
+        <a class="link-home" href="./index.html">Home</a>
+      </li>
+      <li class="header-basket">
+        <div class="header-besket-wrapper">
+          <a class="header-basket-item" href="./cart.html">
+            <span class="icon-basket-wrap">
+              <svg class="icon-basket-header">
+                <use href="/test-online/assets/icons-5dbc4c13.svg#shopping-cart-icon"></use>
+              </svg>
+            </span>
+            <span class="cart-amount"
+              >CART (<span class="js-header-cart-items">0</span>)</span
+            >
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+    <section id="hero">
+    <div class="container hero-section">
+        <div class="hero-info">
+            <h1 class="hero-title">Welcome to the <span class="hero-title-special">Food</span> Boutique!</h1>
+            <p class="hero-text">With Food Boutique, you're not just subscribing to food, you're signing up for a fresher, fitter, and happier you.</p>
+        </div>
+    </div>
+    <div class="container hero-image">
+        <div class="hero-big-image-div">
+            <img class="hero-big-image" src="/test-online/assets/hero-mobile@1x-63382c28.jpg" alt="a basket with fresh vegetables">
+        </div>
+        <div class="hero-little-image">
+            <svg class="icon" width="100" height="100">
+                <use href="#check-mark-icon"></use>
+              </svg>
+              <!-- <svg class="icon icon-organic-food"><use xlink:href="#icon-organic-food"></use></svg> -->
+        </div>
+    </div>
+</section>
+
+
+    <div class="product-card-container">
+    <ul class="product-card-list">
+    </ul>
+</div>
+    <section class="popular-section">
+  <h2 class="popular-header">Popular products</h2>
+  <ul class="popular-list js-object" data-jsname="popularList"></ul>
+</section>
+
     <section class="discount-section">
   <h2 class="discount-header">Discount products</h2>
   <ul class="discount-list js-object" data-jsname="discountList"></ul>
 </section>
 
-    
+    <footer class="footer">
+  <div class="container footer-container">
+    <div class="footer-content-wrap">
+      <div class="footer-logo-social">
+        <a class="footer-logo-link" href="./index.html">
+          <span class="footer-logo-icon-wrap">
+            <svg class="footer-logo-icon">
+              <use href="/test-online/assets/icons-5dbc4c13.svg#logo-icon"></use>
+            </svg>
+          </span>
+          Food Boutique
+        </a>
+        <ul class="footer-social-media-list">
+          <li class="social-media-item">
+            <a
+              class="social-media-link"
+              href=" https://www.facebook.com/goITclub/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook link"
+            >
+              <svg class="social-media-icon">
+                <use href="/test-online/assets/icons-5dbc4c13.svg#facebook-icon"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social-media-item">
+            <a
+              class="social-media-link"
+              href=" https://www.instagram.com/goitclub/ "
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram link"
+            >
+              <svg class="social-media-icon">
+                <use href="/test-online/assets/icons-5dbc4c13.svg#instagram-icon"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li class="social-media-item">
+            <a
+              class="social-media-link"
+              href="https://www.youtube.com/c/GoIT"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Youtub link"
+            >
+              <svg class="social-media-icon">
+                <use href="/test-online/assets/icons-5dbc4c13.svg#youtube-icon"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-main-info-wrap">
+        <div class="text-block">
+          <h2 class="footer-slogan-title">
+            Discover the Variety of Flavors and Quality
+          </h2>
+          <p class="footer-slogan">
+            An online store where you will find fresh, natural and delicious
+            products for a healthy life and unforgettable gastronomic
+            adventures.
+          </p>
+        </div>
+
+        <div class="subscription-wrap">
+          <p class="suscription-text">
+            Subscribe and learn about new products!
+          </p>
+
+          <form class="footer-form">
+            <div class="contact-form-box">
+              <input
+                type="email"
+                id="user-email"
+                name="email"
+                placeholder="Email"
+                class="contact-form-input"
+                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                required
+              />
+
+              <button type="submit" class="footer-form-btn">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-policy-wrap">
+      <div>
+        <p class="footer-copywriting-text">
+          Food Boutique. All rights reserved.
+        </p>
+      </div>
+      <div class="footer-terms-wrap">
+        <p class="footer-privacy-policy-link">Privacy Policy</p>
+
+        <span class="footer-policy-dividion">/</span>
+
+        <p class="footer-terms-link">Terms of Service</p>
+      </div>
+    </div>
+  </div>
+  <div class="backdrop js-backdrop">
+    <div class="modal">
+      <div class="modal-btn-box">
+        <svg class="modal-btn" data-action="close-modal">
+          <use href="/test-online/assets/icons-5dbc4c13.svg#close-icon"></use>
+        </svg>
+      </div>
+      <div class="modal-inner">
+        <h2>Вітаю шановний!</h2>
+        <p>
+          Ми дуже вдяіні що ви вирішила оформити підписку до нашого магазину,
+          але нажаль щось пішло не так. <br />
+          Проте, як тільки помилка вирішиться, ви зможите пидписатись! А поки
+          радимо вам задонатити копійку на ЗСУ!
+          <br />
+          З повагою, адміністрація!
+        </p>
+      </div>
+      <img
+        class="modal__food-basket"
+        src="/test-online/assets/Rectangle 2-6a8ff382.png"
+        alt="Кошик з фруктамі"
+      />
+    </div>
+  </div>
+</footer>
+
 
     
   </body>
