@@ -37,7 +37,7 @@ function handleMarkup(data) {
   <li class="product-card-item discount-list-item" id=${_id} data-discount="${is10PercentOff}">
 
   <svg class="discount-icon" id=${_id}>
-   <use href="icon.svg#discount-icon"></use>
+   <use href="${discountIcon}"></use>
  </svg>
        <div class="product-card-wrapper">
         <div class="card-img-wrapper"><img src="${img}" alt="${name}" class="product-card-image"></div>
@@ -57,7 +57,7 @@ function handleMarkup(data) {
         <p class="product-curd-price">$${price}</p>
         <button class="card_buy-btn">
           <svg class="card_buy-logo-icon">
-                <use href="./img/icons.svg#shopping-cart-icon"></use>
+                <use href="${cartIcon}"></use>
           </svg>
         </button>
         </div>

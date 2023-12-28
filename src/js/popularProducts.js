@@ -1,9 +1,14 @@
-import fetchAPI from './fetchApi.js';
-import localStorageApi from './localStorageApi.js';
-import refsAPI from './refs.js';
+import fetchAPI from "./fetchApi.js";
+import localStorageApi from "./localStorageApi.js";
+import refsAPI from "./refs.js";
 
-import { getProductModal } from './modalProduct.js';
-import { buyProduct } from './discount.js';
+import { getProductModal } from "./modalProduct.js";
+import { buyProduct } from "./discount.js";
+
+import discountIcon from "../img/icons.svg#discount-icon";
+import cartIcon from "../img/icons.svg#discount-cart";
+import checkedIcon from "../img/icons.svg#discount-checked";
+
 let frontEndPopular;
 let popularProducts;
 let product_Id;
@@ -11,33 +16,33 @@ let checkBtn;
 
 async function renderPopular() {
   frontEndPopular = new refsAPI();
-  frontEndPopular.PopularList.innerHTML = '';
+  frontEndPopular.PopularList.innerHTML = "";
   popularProducts = await fetchAPI.popular();
   // console.log("popularProducts",popularProducts);
   // ----------------
   render();
 }
 function addProduct(event) {
-  const product = event.target.closest('.cards-item');
+  const product = event.target.closest(".cards-item");
   // console.log(product);
   product_Id = product.dataset.id;
-  checkBtn[`btn1${product_Id}`].style.display = 'none';
-  checkBtn[`check${product_Id}`].style.display = 'flex';
+  checkBtn[`btn1${product_Id}`].style.display = "none";
+  checkBtn[`check${product_Id}`].style.display = "flex";
   buyProduct(product_Id);
 
   //   console.log(product_Id);
 }
 // -----------------------------------------------------------------------
 function handleModall(event) {
-  if (event.target.classList.contains('js-btn')) {
+  if (event.target.classList.contains("js-btn")) {
     addProduct(event);
     return;
   }
-  if (!event.target.classList.contains('js-btn')) {
+  if (!event.target.classList.contains("js-btn")) {
     // const product = event.target.closest('.cards-item');
     // product_Id = product.dataset.id;
     // console.log(product_Id);
-    getProductModal(event, '.cards-item');
+    getProductModal(event, ".cards-item");
 
     // alert();
     return;
@@ -71,19 +76,19 @@ export function createMarcup(arr) {
                </div>
                <button id="${_id}" class="popular-products-btn js-btn discount-buy js-object" data-jsname="btn1${_id}"  type="button">
                     <svg class="basket-icon-svg js-btn js-object"  data-jsname="btn" width="12" height="12">
-                        <use class="js-btn" href="./img/icons.svg#shopping-cart-icon"></use>
+                        <use class="js-btn" href="${cartIcon}"></use>
                     </svg>
                 </button>
                 <div id="${_id}" class="check-btn js-object" data-jsname="check${_id}" >
                 <svg data-jsname="check1" class="check-icon-svg  discount-buy js-object" width="12" height="12">
-                        <use href="./img/icons.svg#check-mark-icon"></use>
+                        <use href="${checkedIcon}"></use>
                     </svg></div>
                </li>    
                
     
 `
     )
-    .join('');
+    .join("");
 }
 // // ---------------------------------------------------------------------
 async function render() {
@@ -91,7 +96,7 @@ async function render() {
     const data = popularProducts;
     //   console.log('render', data);
     frontEndPopular.PopularList.insertAdjacentHTML(
-      'beforeend',
+      "beforeend",
       createMarcup(data)
     );
     checkBtn = new refsAPI();
@@ -100,16 +105,16 @@ async function render() {
     // console.log("Mycart",Mycart.products);
     //get saved products id
     const productsInCart = [];
-    if ('products' in Mycart) {
+    if ("products" in Mycart) {
       Mycart = Mycart.products;
-      Mycart.forEach(product => productsInCart.push(product.productId));
+      Mycart.forEach((product) => productsInCart.push(product.productId));
     }
     //draw discount products
     const productsList = [];
-    popularProducts.forEach(product => {
+    popularProducts.forEach((product) => {
       if (productsInCart.includes(product._id)) {
-        checkBtn[`btn1${product._id}`].style.display = 'none';
-        checkBtn[`check${product._id}`].style.display = 'flex';
+        checkBtn[`btn1${product._id}`].style.display = "none";
+        checkBtn[`check${product._id}`].style.display = "flex";
       }
     });
     return await data;
@@ -123,4 +128,3 @@ export { renderPopular, handleModall };
 //         import { renderPopular,handleModall } from './js/popularProducts.js';
 // renderPopular()
 //  frontEnd.PopularList.addEventListener('click', handleModall)
-
