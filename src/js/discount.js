@@ -149,12 +149,12 @@ function refreshIcons(prefix) {
   }
 }
 
-function discountOnClick(event) {
+async function discountOnClick(event) {
   if (event.target.classList.contains("discount-buy")) {
     buyProduct(event.target.dataset.productid);
     setCheckedIcon(event.target.dataset.productid, "discountIcon");
   } else if (event.target.classList.contains("discount-show")) {
-    getProductModal(event, ".discount-show");
+    await getProductModal(event, ".discount-show");
     refreshIcons("discountIcon");
   }
 }
