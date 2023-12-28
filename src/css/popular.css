@@ -1,166 +1,109 @@
-.popular-section {
-  max-width: 335px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0px;
-  margin-bottom: 80px;
-}
-
-.popular-header {
-  color: var(--primary-black-color);
-  font-family: Neue Montreal;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 28px; /* 116.667% */
-  margin-bottom: 20px;
-}
-
-.popular-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: space-between;
-}
-
-.popular-list-item {
-  border-radius: 15px;
-  background: var(--secondary-white-color);
-  padding: 16px;
-
-  position: relative;
-}
-
-.popular-list-item:hover,
-.popular-list-item:focus {
-  cursor: pointer;
-}
-
-.popular-image-box {
-  border-radius: 10px;
-  background: var(--primary-white-color);
-  padding: 18px 0px 18px 0px;
-  margin-bottom: 16px;
-}
-
-.popular-image {
-  margin: auto;
-}
-
-.popular-description {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.popular-title {
-  color: var(--primary-black-color);
-  font-family: Neue Montreal;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px; /* 111.111% */
-}
-
-.popular-description-price {
-  display: flex;
-  gap: 8px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.popular-price {
-  color: var(primary-black-color);
-  font-family: Neue Montreal;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px; /* 111.111% */
-}
-
-.popular-icon-box {
-  width: 34px;
-  height: 34px;
-  background-color: var(--primary-green-color);
-  border-radius: 17px;
-  padding: 8px;
-}
-
-.popular-icon-box:hover,
-.popular-icon-box:focus {
-  background-color: var(--hover-button-green-color);
-}
-
-.popular-cart {
-  fill: var(--primary-white-color);
-
-  margin: auto;
-}
-
-.popular-icon {
-  fill: var(--secondary-white-color);
-  background-color: var(--primary-green-color);
-  width: 60px;
-  height: 60px;
-
-  border-radius: 30px;
-  position: absolute;
-  right: 10px;
-  top: 3px;
-}
-
-@media (min-width: 768px) {
-  .popular-section {
-    max-width: 704px;
-    margin-bottom: 100px;
+popular-products-box {
+    width: 335px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .cards-title {
+    margin-bottom: 20px;
+    color: var(--primary-black-color);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.17; /* 116.667% */
+  }
+  
+  ul li:last-child {
+    margin-bottom: 0;
+  }
+  .cards-item {
+    padding: 12px;
+    max-width: 335px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background-color: var(--secondary-white-color);
+    position: relative;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
   }
 
-  .popular-header {
-    font-size: 28px;
-    line-height: 32px; /* 114.286% */
+  .photo-card {
+    width: 74px;
+    height: 74px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--primary-white-color);
   }
 
-  .popular-list {
-    flex-direction: row;
-    gap: 32px;
+  .info-title {
+    padding-bottom: 12px;
+    color: var(--primary-black-color);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.11; /* 111.111% */
   }
-
-  .popular-list-item {
-    width: 336px;
+  .info-text {
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.17; /* 116.667% */
   }
-
-  .popular-title {
-    font-size: 20px;
-    line-height: 24px; /* 120% */
+  .info-span {
+    margin-left: 4px;
+    color: var(--primary-black-color);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.17; /* 116.667% */
   }
-
-  .popular-price {
-    font-size: 20px;
-    line-height: 24px; /* 120% */
+  .info-wraper {
+    padding-top: 9px;
+    display: flex;
+    gap: 9px;
   }
-}
-
-@media (min-width: 1440px) {
-  .popular-section {
-    width: 275px;
-    margin-bottom: 140px;
+  /* ----------------------------------------- */
+  .cards-item > .popular-products-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
   }
-
-  .popular-list {
-    flex-direction: column;
-    gap: 20px;
+  .popular-products-btn {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    border-radius: 50%;
+    background-color: var(--primary-white-color);
+    color: var(--primary-green-color);
+    transition: background-color, var(--transition-function);
   }
-
-  .popular-list-item {
-    width: 100%;
+  .popular-products-btn:hover,
+  .popular-products-btn:focus {
+    background-color: var(--primary-green-color);
   }
-
-  .popular-image-box {
-    padding-top: 23px;
-    padding-bottom: 22px;
+  .basket-icon-svg {
+    fill: currentColor;
   }
-
-  .popular-icon {
-    top: -3px;
+  .popular-products-btn:hover .basket-icon-svg,
+  .popular-products-btn:focus .basket-icon-svg {
+    fill: var(--primary-white-color);
   }
-}
+  .cards-item > .check-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+  .check-btn {
+    pointer-events: none;
+    /* display: flex; */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-green-color);
+    border-radius: 50%;
+    border: none;
+    color: var(--primary-green-color);
+  }

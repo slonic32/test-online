@@ -1,4 +1,3 @@
-
 import fetchAPI from './fetchApi.js';
 import localStorageApi from './localStorageApi.js';
 
@@ -8,9 +7,7 @@ import checkedIcon from '../img/icons.svg#discount-checked';
 
 const productsList = document.querySelector('.product-card-list');
 
-const productList = await fetchAPI.products();
-
-productsList.addEventListener('click', onCardClick);
+const productListApi = await fetchAPI.products();
 
 function onCardClick(e) {
   const cardId = e.target.closest('.product-card-item').id;
@@ -19,12 +16,12 @@ function onCardClick(e) {
     if (e.target.nodeName === "use" || e.target.nodeName === "BUTTON" || e.target.nodeName === "svg") {
       console.log('Buy prod', cardId)
      
-   return
+   return;
     }
     
     console.log('Open modal', cardId)
     
-    return
+    return;
   }
   
 }
@@ -39,7 +36,7 @@ function handleMarkup(data) {
  </svg>
        <div class="product-card-wrapper">
         <div class="card-img-wrapper"><img src="${img}" alt="${name}" class="product-card-image"></div>
-        <h2 calss="product-card-name">${name}</h2>
+        <h2 class="product-card-name">${name}</h2>
         <div class="product-card-info">
             <p class="info-text">
                 Category:<span class="info-span">${category}</span>
@@ -67,26 +64,22 @@ function handleMarkup(data) {
   
 };
 
-function renderCards(arr) {
-  arr.map(item => {
+function renderCards() {
+  productListApi.results.map(item => {
     return productsList.insertAdjacentHTML('beforeend', handleMarkup(item));
   }
   )
 };
 
-renderCards(productList.results);
-
 function shownDiscIcon(arr) {
   arr.map(el => {
-    const icon = document.querySelector('.discount-icon')
+    const icon = document.querySelector('.discount-icon');
     
-    console.log(icon)
-      
+    console.log(icon);
     
-    
-  })
-};
-shownDiscIcon(productList.results)
+  });
+}
+// shownDiscIcon(productListApi.results)
 
 
 
@@ -94,17 +87,16 @@ function renderSearchedCards(category, search) {
   productsList.innerHTML = '';
 
   if (category) {
-    return category.map(item => productsList.insertAdjacentHTML('beforeend', handleMarkup(item)))
+    return category.map(item => productsList.insertAdjacentHTML('beforeend', handleMarkup(item)));
   }
 
   if (search) {
     if (search.length === 0) {
         window.alert('Oops test')
       }
-    return search.map(item => productsList.insertAdjacentHTML('beforeend', handleMarkup(item)))
+    return search.map(item => productsList.insertAdjacentHTML('beforeend', handleMarkup(item)));
   }
 };
 
-
-
+export{onCardClick, renderCards, renderSearchedCards, productsList};
 
