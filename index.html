@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodBoutique 🥦🍓</title>
     
-    <script type="module" crossorigin src="/test-online/assets/vendor-a61d8330.js"></script>
-    <script type="module" crossorigin src="/test-online/assets/main-b4a0cf36.js"></script>
-    <link rel="stylesheet" href="/test-online/assets/main-407dbef8.css">
+    <script type="module" crossorigin src="/test-online/assets/vendor-0363fca5.js"></script>
+    <script type="module" crossorigin src="/test-online/assets/main-24efda19.js"></script>
+    <link rel="stylesheet" href="/test-online/assets/main-37e26e36.css">
+    <link rel="stylesheet" href="/test-online/assets/vendor-b3ce9496.css">
   </head>
   <body>
     <header class="page-header-container container">
@@ -66,16 +67,41 @@
     </div>
 </section>
 
+    <div class="options-holder">
+  <form class="filter-form">
+    <label class="filter-txt">Filter:</label>
+    <div class="total">
+      <div class="filter-div">
+        <input
+          class="input-filter"
+          type="text"
+          placeholder="Search for anything"
+          id="input-filter"
+        />
+        <button class="submit-filter" type="submit" id="filterButt">
+          <svg class="search-svg"><use href="../img/icons.svg#search-icon"></use></svg>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="dropdown" id="myDropdown">
+    <div class="dropdown-toggle" onclick="toggleDropdown()">
+      <p class="category-content"></p>
+      <svg class="search-svg"><use href="../img/icons.svg#categories-icon"></use></svg>
+    </div>
+    <div class="dropdown-menu" id="dropdownMenu"></div>
+  </div>
+</div>
 
     <div class="product-card-container">
     <ul class="product-card-list">
     </ul>
 </div>
-    <section class="popular-section">
-  <h2 class="popular-header">Popular products</h2>
-  <ul class="popular-list js-object" data-jsname="popularList"></ul>
-</section>
-
+    <section class="popular-products-box">
+    <h2 class="cards-title">Popular products</h2>
+    <ul class="cards-list js-object" data-jsname="PopularList"></ul>
+  </section>
+  
     <section class="discount-section">
   <h2 class="discount-header">Discount products</h2>
   <ul class="discount-list js-object" data-jsname="discountList"></ul>

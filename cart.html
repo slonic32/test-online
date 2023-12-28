@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart</title>
     
-    <script type="module" crossorigin src="/test-online/assets/vendor-a61d8330.js"></script>
-    <script type="module" crossorigin src="/test-online/assets/main-b4a0cf36.js"></script>
-    <link rel="stylesheet" href="/test-online/assets/main-407dbef8.css">
+    <script type="module" crossorigin src="/test-online/assets/vendor-0363fca5.js"></script>
+    <script type="module" crossorigin src="/test-online/assets/main-24efda19.js"></script>
+    <link rel="stylesheet" href="/test-online/assets/vendor-b3ce9496.css">
+    <link rel="stylesheet" href="/test-online/assets/main-37e26e36.css">
   </head>
   <body>
     <header class="page-header-container container">
@@ -58,7 +59,38 @@
           </span>
           <h2 class="cart-title" id="cart-id">CART (0)</h2>
         </div>
-        <div class="cart-products-order-container"></div>
+        <div class="cart-products-order-container">
+          <div class="cart-empty-product">
+            <picture>
+              <source
+                media="(min-width: 1440px)"
+                srcset="/test-online/assets/empty-basket@1x-9909cc93.png 1x, /test-online/assets/empty-basket@2x-1ab3be8c.png 2x"
+              />
+              <source
+                media="(min-width: 768px)"
+                srcset="/test-online/assets/empty-basket@1x-9909cc93.png 1x, /test-online/assets/empty-basket@1x-9909cc93.png 2x"
+              />
+
+              <source
+                media="(max-width: 767px)"
+                srcset="/test-online/assets/empty-basket@1x-9909cc93.png 1x, /test-online/assets/empty-basket@1x-9909cc93.png 2x"
+              />
+              <img
+                src="/test-online/assets/empty-basket@1x-9909cc93.png"
+                alt="empty cart"
+                class="cart-epmpty-img"
+              />
+            </picture>
+
+            <p class="cart-empty-title">
+              Your basket is <span class="cart-empty-item"> empty...</span>
+            </p>
+            <p class="cart-empty-text">
+              Go to the main page to select your favorite products and add them
+              to the cart.
+            </p>
+          </div>
+        </div>
       </section>
     </main>
 
