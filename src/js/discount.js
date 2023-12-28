@@ -1,12 +1,12 @@
-import fetchAPI from './fetchApi.js';
-import localStorageApi from './localStorageApi.js';
-import refsAPI from './refs.js';
-import { getProductModal } from './modalProduct.js';
+import fetchAPI from "./fetchApi.js";
+import localStorageApi from "./localStorageApi.js";
+import refsAPI from "./refs.js";
+import { getProductModal } from "./modalProduct.js";
 
 // icons
-import discountIcon from '../img/icons.svg#discount-icon';
-import cartIcon from '../img/icons.svg#discount-cart';
-import checkedIcon from '../img/icons.svg#discount-checked';
+import discountIcon from "../img/icons.svg#discount-icon";
+import cartIcon from "../img/icons.svg#discount-cart";
+import checkedIcon from "../img/icons.svg#discount-checked";
 
 // function to draw discount products section
 async function drawDiscount() {
@@ -15,7 +15,7 @@ async function drawDiscount() {
   // get all nodes
   const frontEnd = new refsAPI();
   //clear
-  frontEnd.discountList.innerHTML = '';
+  frontEnd.discountList.innerHTML = "";
   //get list of discount products
   const discountProducts = await fetchAPI.discount();
 
@@ -39,13 +39,13 @@ async function drawDiscount() {
   let cart = localStorageApi.loadCart();
   //get saved products id
   const productsInCart = [];
-  if ('products' in cart) {
+  if ("products" in cart) {
     cart = cart.products;
-    cart.forEach(product => productsInCart.push(product.productId));
+    cart.forEach((product) => productsInCart.push(product.productId));
   }
   //draw discount products
   const productsList = [];
-  productsToDraw.forEach(product => {
+  productsToDraw.forEach((product) => {
     //chose icon
     let icon = cartIcon;
     if (productsInCart.includes(product._id)) {
@@ -80,32 +80,37 @@ async function drawDiscount() {
          </li>
         `);
   });
-  frontEnd.discountList.insertAdjacentHTML('beforeend', productsList.join(''));
+  frontEnd.discountList.insertAdjacentHTML("beforeend", productsList.join(""));
 }
 
-function buyProduct(id) {
+function productInCart(id) {
   //read saved Cart
   let cart = localStorageApi.loadCart();
   //check if product in cart
-  let notInCart = true;
-  if ('products' in cart) {
-    cart.products.forEach(product => {
+  let inCart = false;
+  if ("products" in cart) {
+    cart.products.forEach((product) => {
       if (product.productId === id) {
-        notInCart = false;
+        inCart = true;
         return;
       }
     });
   }
+  return inCart;
+}
+
+function buyProduct(id) {
+  let cart = localStorageApi.loadCart();
   //if not in cart then add
-  if (notInCart) {
-    if ('products' in cart) {
+  if (!productInCart(id)) {
+    if ("products" in cart) {
       cart.products.push({
         productId: id,
         amount: 1,
       });
     } else {
       cart = {
-        email: '',
+        email: "",
         products: [{ productId: id, amount: 1 }],
       };
     }
@@ -130,12 +135,27 @@ function setCartIcon(id, prefix) {
   }
 }
 
+function refreshIcons(prefix) {
+  const frontEnd = new refsAPI();
+  for (var key in frontEnd) {
+    if (key.indexOf(prefix) === 0) {
+      let id = frontEnd[key].dataset.productid;
+      if (productInCart(id)) {
+        setCheckedIcon(id, prefix);
+      } else {
+        setCartIcon(id, prefix);
+      }
+    }
+  }
+}
+
 function discountOnClick(event) {
-  if (event.target.classList.contains('discount-buy')) {
+  if (event.target.classList.contains("discount-buy")) {
     buyProduct(event.target.dataset.productid);
-    setCheckedIcon(event.target.dataset.productid, 'discountIcon');
-  } else if (event.target.classList.contains('discount-show')) {
-    getProductModal(event, '.discount-show');
+    setCheckedIcon(event.target.dataset.productid, "discountIcon");
+  } else if (event.target.classList.contains("discount-show")) {
+    getProductModal(event, ".discount-show");
+    refreshIcons("discountIcon");
   }
 }
 
@@ -145,4 +165,5 @@ export {
   buyProduct,
   setCheckedIcon,
   setCartIcon,
+  refreshIcons,
 };
