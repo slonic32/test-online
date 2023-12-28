@@ -1,33 +1,40 @@
-import fetchAPI from './fetchApi.js';
-import localStorageApi from './localStorageApi.js';
+import fetchAPI from "./fetchApi.js";
+import localStorageApi from "./localStorageApi.js";
 
-import discountIcon from '../img/icons.svg#discount-icon';
-import cartIcon from '../img/icons.svg#discount-cart';
-import checkedIcon from '../img/icons.svg#discount-checked';
+import discountIcon from "../img/icons.svg#discount-icon";
+import cartIcon from "../img/icons.svg#discount-cart";
+import checkedIcon from "../img/icons.svg#discount-checked";
 
-const productsList = document.querySelector('.product-card-list');
+const productsList = document.querySelector(".product-card-list");
 
-const productListApi = await fetchAPI.products();
+const productListApi = fetchAPI.products();
 
 function onCardClick(e) {
-  const cardId = e.target.closest('.product-card-item').id;
+  const cardId = e.target.closest(".product-card-item").id;
 
-  if (e.target.classList.contains('product-card-item') || e.target !== e.currentTarget) {
-    if (e.target.nodeName === "use" || e.target.nodeName === "BUTTON" || e.target.nodeName === "svg") {
-      console.log('Buy prod', cardId)
-     
-   return;
+  if (
+    e.target.classList.contains("product-card-item") ||
+    e.target !== e.currentTarget
+  ) {
+    if (
+      e.target.nodeName === "use" ||
+      e.target.nodeName === "BUTTON" ||
+      e.target.nodeName === "svg"
+    ) {
+      console.log("Buy prod", cardId);
+
+      return;
     }
-    
-    console.log('Open modal', cardId)
-    
+
+    console.log("Open modal", cardId);
+
     return;
   }
-  
 }
 function handleMarkup(data) {
-  const { category, img, name, popularity, price, size, _id, is10PercentOff } = data;
-  
+  const { category, img, name, popularity, price, size, _id, is10PercentOff } =
+    data;
+
   const markup = `
   <li class="product-card-item discount-list-item" id=${_id} data-discount="${is10PercentOff}">
 
@@ -61,42 +68,40 @@ function handleMarkup(data) {
   `;
 
   return markup;
-  
-};
+}
 
 function renderCards() {
-  productListApi.results.map(item => {
-    return productsList.insertAdjacentHTML('beforeend', handleMarkup(item));
-  }
-  )
-};
+  productListApi.results.map((item) => {
+    return productsList.insertAdjacentHTML("beforeend", handleMarkup(item));
+  });
+}
 
 function shownDiscIcon(arr) {
-  arr.map(el => {
-    const icon = document.querySelector('.discount-icon');
-    
+  arr.map((el) => {
+    const icon = document.querySelector(".discount-icon");
+
     console.log(icon);
-    
   });
 }
 // shownDiscIcon(productListApi.results)
 
-
-
 function renderSearchedCards(category, search) {
-  productsList.innerHTML = '';
+  productsList.innerHTML = "";
 
   if (category) {
-    return category.map(item => productsList.insertAdjacentHTML('beforeend', handleMarkup(item)));
+    return category.map((item) =>
+      productsList.insertAdjacentHTML("beforeend", handleMarkup(item))
+    );
   }
 
   if (search) {
     if (search.length === 0) {
-        window.alert('Oops test')
-      }
-    return search.map(item => productsList.insertAdjacentHTML('beforeend', handleMarkup(item)));
+      window.alert("Oops test");
+    }
+    return search.map((item) =>
+      productsList.insertAdjacentHTML("beforeend", handleMarkup(item))
+    );
   }
-};
+}
 
-export{onCardClick, renderCards, renderSearchedCards, productsList};
-
+export { onCardClick, renderCards, renderSearchedCards, productsList };
